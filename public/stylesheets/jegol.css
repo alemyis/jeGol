@@ -1,0 +1,188 @@
+
+html {
+	color:#231F20;
+	font-family:"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+	font-size:12px;
+	line-height:1.5;
+}
+
+#jegol_box
+{
+	width:100%;
+	min-width:700px;
+    border:0px;
+	
+}
+
+#jegol_tabs{
+	
+}
+
+#jegol_topic
+{
+    border: thin solid #F0F0F0;
+    text-align: center;
+	padding: 10px 0px 0px 0px;
+    margin-bottom: 3px;
+	background-color:#FAFCFC;
+	color:#4B7399;
+	height:35px;
+}
+
+#jegol_version
+{
+	color:#66CC66;
+	font-size:large;
+}
+
+#jegol_buzz
+{
+	float:right;
+	color:#4B7399;
+}
+#jegol_feedback
+{
+	float:right;
+}
+
+#jegol_chatlog
+{
+    height:450px;
+    overflow: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+	font-size:12px;
+	line-height:1;
+}
+
+#jegol_roster
+{
+    height:450px;
+    overflow: auto;
+    list-style-type: none;
+	font-family:"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+	font-size:12px;
+	line-height:1.5;
+}
+
+#jegol_tags
+{
+    /*border: thin solid #4B7399;*/
+    height:450px;
+    overflow: auto;
+}
+
+#jegol_tag_frameset
+{
+    /*border: thin solid #4B7399; /*#ffc0cb;*/
+    padding-top: 20px;
+}
+fieldset 
+{ 
+	border:thin solid #4B7399; /*#ffc0cb;*/ 
+	font-family:"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+	font-size:13px;
+	line-height:1.5;
+}
+
+#jegol_toggle_roster
+{
+    float:right;
+    height:450px;
+    width: 10px;
+    border-right: thin solid;
+    border-top: thin solid;
+    border-bottom: thin solid;
+}
+
+#jegol_msgArea
+{
+    margin-top: 5px;
+    width:100%;
+}
+
+#jegol_connection_status
+{
+    color: silver;   
+}
+
+#jegol_postButton
+{
+    float:right;
+}
+.jegol_Button{
+	
+    border:1px solid #FFFFFF; /*4B7399;*/
+	background-color:#66CC66;/*#FAFCFC;*/
+	color:#FFFFFF; /*4B7399;*/
+	font-weight: bold;
+}
+
+.jegol_log_message
+{
+    padding: 15px 10px 10px 10px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    /*border: thin solid #4B7399;/*#ffc0cb;*/
+	/*border-left:  thin solid #4B7399;	 */
+	border-top:  thin solid #F0F0F0;
+	background-color:#FAFCFC;
+}
+
+.jegol_log_nickname
+{
+    /*hide nickname*/
+    /*display: none;*/
+	color:#4B7399;
+	margin: 5px 0px 5px 0px;
+	padding-left:5px;
+}
+
+.jegol_log_timestamp
+{
+    float:right;
+    font-size: small;
+	color: #4B7399;
+	display:none;
+}
+
+.jegol_log_i_joined, .jegol_log_user_joined, .jegol_log_user_left
+{
+    /*hide login activities*/
+    /*display: none;*/
+	font-style:italic;
+	color:#4B7399;
+}
+
+.jegol_plugin
+{
+    overflow: hidden;
+    max-width:450px;
+    padding-left: 5px;
+}
+
+.jegol_plugin_menu
+{
+    font-family: arial;
+    font-size: 8pt;
+    padding-right: 10px;
+    float:right;
+	font-family: verdana;
+	font-weight:bold;
+}
+
+.jegol_plugin_menu_item
+{
+    cursor: pointer;
+	background-color: #66CC66;/*4B7399;*/
+	color: #FFFFFF;
+	padding: 0px 10px 0px 10px;
+	text-transform: capitalize;
+}
+
+.jegol_tags_item
+{
+	font-family:"Lucida Grande","Lucida Sans Unicode","Lucida Sans",Geneva,Verdana,sans-serif;
+	font-size:13px;
+	line-height:1.5;
+}

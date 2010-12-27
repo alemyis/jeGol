@@ -32,4 +32,6 @@ JeGol::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+  
+  JEGOL_CONFIG = YAML.load_file("#{Rails.root}/config/jegol.yml")
 end

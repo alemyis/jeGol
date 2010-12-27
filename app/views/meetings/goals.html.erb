@@ -1,0 +1,19 @@
+<% title "Meeting Goal" %>
+
+<%= form_for :meeting, @meeting, :url => meeting_goal_post_path(:id => @meeting.id) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    Meeting topic: <%= @meeting.topic %>
+  </p>
+  <p>
+    <%= render 'duration', :f => f, :hours => @meeting.getHours, :minutes => @meeting.getMinutes %>
+  </p>
+  <p>
+  Goals: 
+  <% f.fields_for :goals do |builder| %>
+    <%= render 'goal_fields', :f => builder %>
+  <% end %>
+  </p>
+  <p><%= link_to_add_fields "Add goal", f, :goals %></p>
+  <p><%= f.submit "Next"%></p>
+<% end %>

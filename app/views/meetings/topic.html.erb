@@ -1,0 +1,10 @@
+<% title "Meeting Topic" %>
+
+<%= form_for :meeting, @meeting, :url => @meeting.id.nil? ? meeting_topic_new_post_path(:id => @meeting.id) : meeting_topic_post_path(:id => @meeting.id) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :topic %><br />
+    <%= f.text_field :topic %>
+  </p>
+  <p><%= f.submit "Next"%></p>
+<% end %>

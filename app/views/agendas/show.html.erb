@@ -1,0 +1,20 @@
+<% title "Agenda" %>
+
+<p>
+  <strong>Meeting:</strong>
+  <%= @agenda.meeting_id %>
+</p>
+<p>
+  <strong>Content:</strong>
+  <%= @agenda.content %>
+</p>
+<p>
+  <strong>Duration:</strong>
+  <%= @agenda.duration %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_agenda_path(@agenda) %> |
+  <%= link_to "Destroy", @agenda, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", agendas_path %>
+</p>

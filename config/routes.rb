@@ -1,58 +1,79 @@
 JeGol::Application.routes.draw do
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
-
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
-
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
+  match '/' => 'meetings#index'
+  match '/home' => 'meetings#index'
+  
+  #map.meeting_topic_new 'meetings/topic', :conditions => { :method => :get  }, :controller => 'meetings', :action => 'topic_get'
+  match '/meetings/topic' => 'meetings#topic_get', :conditions => { :method => :get  }
+  #map.meeting_topic_new 'meetings/topic', :conditions => { :method => :get  }, :controller => 'meetings', :action => 'topic_get'
+  match '/meetings/:id/topic' => 'meetings#topic_get', :conditions => { :method => :get  }
+  #map.meeting_topic_new 'meetings/topic', :conditions => { :method => :get  }, :controller => 'meetings', :action => 'topic_get'
+  match '/meetings/topic' => 'meetings#topic_post', :conditions => { :method => :post  }
+  #map.meeting_topic_new 'meetings/topic', :conditions => { :method => :get  }, :controller => 'meetings', :action => 'topic_get'
+  match '/meetings/:id/topic' => 'meetings#topic_post', :conditions => { :method => :post  }
+  #map.meeting_topic_new 'meetings/topic', :conditions => { :method => :get  }, :controller => 'meetings', :action => 'topic_get'
+  match '/meetings/topic' => 'meetings#topic_post', :conditions => { :method => :post  }
+  #map.meeting_topic_new_post 'meetings/topic', :conditions => { :method => :post  }, :controller => 'meetings', :action => 'topic_post'
+  match '/meetings/:id/topic' => 'meetings#topic_post', :conditions => { :method => :post }
+  #map.meeting_topic_get 'meetings/:id/topic', :conditions => { :method => :get  }, :controller => 'meetings', :action => 'topic_get'
+  match '/meetings/:id/topic' => 'meetings#topic_get', :conditions => {:method => :get}
+  #map.meeting_topic_post 'meetings/:id/topic', :conditions => { :method => :post }, :controller => 'meetings', :action => 'topic_post'
   #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
-
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
-
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
-
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
-
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
-  # root :to => "welcome#index"
-
-  # See how all your routes lay out with "rake routes"
-
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
+  #map.meeting_goal_get 'meetings/:id/goals', :conditions => { :method => :get  }, :controller => 'meetings', :action => 'goal_get'
+  match 'meetings/:id/goals' => 'meetings#goal_get', :conditions => { :method => :get }
+  #map.meeting_goal_post 'meetings/:id/goals', :conditions => { :method => :post }, :controller => 'meetings', :action => 'goal_post'
+  match 'meetings/:id/goals' => 'meetings#goal_post', :conditions => { :method => :post }
+  #
+  #map.meeting_agenda_get 'meetings/:id/agendas', :conditions => { :method => :get  }, :controller => 'meetings', :action => 'agenda_get'
+  match 'meetings/:id/agendas' => 'meetings#agenda_get', :conditions => { :method => :get }
+  #map.meeting_agenda_post 'meetings/:id/agendas', :conditions => { :method => :post }, :controller => 'meetings', :action => 'agenda_post'
+  match 'meetings/:id/agendas' => 'meetings#agenda_post', :conditions => { :method => :post }
+  #  
+  #map.meeting_done 'meetings/:id/done', :conditions => { :method => :get  }, :controller => 'meetings', :action => 'done'
+  match 'meetings/:id/done' => 'meetings#done', :conditions => { :method => :get  }
+  
+  #map.bosh_session '/jegol/boshsession/:room_jid', :conditions => {:method => :get }, :controller => 'jegol', :action => 'new_boshsession'
+  match 'jegol/boshsession/:room_jid' => 'jegol#new_boshsession', :conditions => {:method => :get }
+  
+  resources :meetings
+  
+  #map.home '', :controller => 'meetings', :action => 'index'
+  
+  #resources :photos, :as => "images"
+  #
+  #match '/home' => 'meetings#index'
+  ##resources :as => 'home', :controller => 'meetings', :action => 'index'
+  #
+  #match '/meetings/topic' => 'meetings#topic_get' 
+  #resources :as => 'meeting_topic_new', :path => 'meetings/topic', :conditions => { :method => :get  }, :controller => 'meetings', :action => 'topic_get'
+  #
+  ##map.meeting_topic_new 'meetings/topic', :conditions => { :method => :get  }, :controller => 'meetings', :action => 'topic_get'
+  #
+  #resources :as => 'meeting_topic_new_post', :path => 'meetings/topic', :conditions => { :method => :post  }, :controller => 'meetings', :action => 'topic_post'
+  ##map.meeting_topic_new_post 'meetings/topic', :conditions => { :method => :post  }, :controller => 'meetings', :action => 'topic_post'
+  #
+  #resources :as => 'meeting_topic_get', :path => 'meetings/:id/topic', :conditions => { :method => :get  }, :controller => 'meetings', :action => 'topic_get'
+  ##map.meeting_topic_get 'meetings/:id/topic', :conditions => { :method => :get  }, :controller => 'meetings', :action => 'topic_get'
+  #
+  #resources :as => 'meeting_topic_post', :path => 'meetings/:id/topic', :conditions => { :method => :post }, :controller => 'meetings', :action => 'topic_post'
+  ##map.meeting_topic_post 'meetings/:id/topic', :conditions => { :method => :post }, :controller => 'meetings', :action => 'topic_post'
+  #
+  #resources :as => 'meeting_goal_get', :path => 'meetings/:id/goals', :conditions => { :method => :get  }, :controller => 'meetings', :action => 'goal_get'
+  ##map.meeting_goal_get 'meetings/:id/goals', :conditions => { :method => :get  }, :controller => 'meetings', :action => 'goal_get'
+  #
+  #resources :as => 'meeting_goal_post', :path => 'meetings/:id/goals', :conditions => { :method => :post }, :controller => 'meetings', :action => 'goal_post'
+  ##map.meeting_goal_post 'meetings/:id/goals', :conditions => { :method => :post }, :controller => 'meetings', :action => 'goal_post'
+  #
+  #resources :as => 'meeting_agenda_get', :path => 'meetings/:id/agendas', :conditions => { :method => :get  }, :controller => 'meetings', :action => 'agenda_get'
+  ##map.meeting_agenda_get 'meetings/:id/agendas', :conditions => { :method => :get  }, :controller => 'meetings', :action => 'agenda_get'
+  #
+  #resources :as => 'meeting_agenda_post', :path => 'meetings/:id/agendas', :conditions => { :method => :post }, :controller => 'meetings', :action => 'agenda_post' 
+  ##map.meeting_agenda_post 'meetings/:id/agendas', :conditions => { :method => :post }, :controller => 'meetings', :action => 'agenda_post'
+  #  
+  #resources :as => 'meeting_done', :path => 'meetings/:id/done', :conditions => { :method => :get  }, :controller => 'meetings', :action => 'done'
+  ##map.meeting_done 'meetings/:id/done', :conditions => { :method => :get  }, :controller => 'meetings', :action => 'done'
+  #
+  #resources :as => 'bosh_session', :path => '/jegol/boshsession/:room_jid', :conditions => {:method => :get }, :controller => 'jegol', :action => 'new_boshsession'
+  ##map.bosh_session '/jegol/boshsession/:room_jid', :conditions => {:method => :get }, :controller => 'jegol', :action => 'new_boshsession'
+  #
+  #resources :meetings
 end

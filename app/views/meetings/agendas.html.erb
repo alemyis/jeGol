@@ -1,0 +1,34 @@
+<% title "Meeting Agenda" %>
+
+<%= form_for :meeting, @meeting, :url => meeting_agenda_post_path(:id => @meeting.id) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    Meeting topic: <%= @meeting.topic %>
+  </p>
+  <p>
+    Duration: <%= @meeting.getHours %> Hours <%= @meeting.getMinutes %> Minutes
+  </p>
+
+  <p>
+  Agendas:
+  <% f.fields_for :agendas do |builder| %>  
+    <%= render 'agenda_fields', :f => builder %>
+  <% end %> 
+  </p>
+  <p><%= link_to_add_fields "Add agenda", f, :agendas %></p>
+  
+  Optional: 
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </p>
+  <p>
+    <%= f.label :start_at %><br />
+    <%= f.datetime_select :start_at %>
+  </p>
+  <p><%= f.submit "Done"%></p>
+<% end %>

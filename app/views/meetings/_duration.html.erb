@@ -1,0 +1,6 @@
+<p>
+  <%= f.label :duration %><br />
+  <input type="text" id="duration_hours" onchange="duration_calc()" value="<%= hours %>"/> hours
+  <input type="text" id="duration_minutes" onchange="duration_calc()" value="<%= minutes %>"/> minutes
+  <%= f.hidden_field :duration %>
+</p>

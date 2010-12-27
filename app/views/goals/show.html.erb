@@ -1,0 +1,16 @@
+<% title "Goal" %>
+
+<p>
+  <strong>Meeting:</strong>
+  <%= @goal.meeting_id %>
+</p>
+<p>
+  <strong>Content:</strong>
+  <%= @goal.content %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_goal_path(@goal) %> |
+  <%= link_to "Destroy", @goal, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", goals_path %>
+</p>

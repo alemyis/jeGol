@@ -1,0 +1,49 @@
+
+<%= stylesheet_link_tag "jegol", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" %>
+<%= javascript_include_tag 'jegol', 'strophe', 'jegol.tag', 'jegol.plugin.viewer.default', 'jegol.plugin.update.tag', 'jegol.plugin.viewer.image', 'jegol.plugin.viewer.youtube', 'jegol.plugin.viewer.poll', 'jegol.plugin.update.subject', 'http://platform.twitter.com/widgets.js', 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js'%>
+<div id="jegol_box">
+  <input type='hidden' id='notablechat_service_url' value='<%= service %>'  />
+  <div>
+	  <div id="jegol_version">
+		<strong>jeGol</strong><span style="font-size:xx-small;">beta</span> 
+	  </div>
+  </div>
+  <div>
+	  <div id="jegol_buzz">	
+		<div id="jegol_feedback">
+			<input class="jegol_Button" type="button" onclick='javascript:window.open("https://github.com/alemyis/jeGol/issues", "blank")' value="Feedback" />
+		</div>
+		<% if(!tweeturl.nil?) %>
+		<a href='http://twitter.com/share?url=<%= tweeturl %>&via=jegol' class="twitter-share-button">Tweet</a>
+		<% end %>
+
+	  </div>
+    <div id="jegol_topic">Welcome</div>
+  </div>
+  <div id="jegol_tabs">
+      <ul>
+        <li><a href="#jegol_chatlog"><span>All</span></a></li>
+        <li><a href="#jegol_tags"><span>Tagged</span></a></li>
+        <li><a href="#jegol_roster"><span>Roster</span></a></li>
+      </ul>
+      <div id="jegol_chatlog"></div>
+      <div id="jegol_tags"></div>
+      <div id="jegol_roster"></div>
+    </div>
+  <div>
+
+  </div>
+  <% if(!readonly) %>
+  <div>
+    <textarea id='jegol_msgArea'></textarea>
+  	<input id='jegol_postButton' class="jegol_Button" type="submit" value="Post" tabindex="3"/>
+    <span id='jegol_connection_status'>loading...</span>
+  </div>
+  <% end %>
+</div>
+
+<script>
+  $(document).ready(function() {
+    $("#jegol_tabs").tabs();
+  });
+</script>

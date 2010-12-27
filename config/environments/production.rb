@@ -46,4 +46,6 @@ JeGol::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  JEGOL_CONFIG = YAML.load_file("#{Rails.root}/config/jegol.yml")
 end

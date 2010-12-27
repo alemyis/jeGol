@@ -1,0 +1,59 @@
+
+<table>
+  <tr>
+	<td style="width:20px">
+	</td>
+    <td>
+      <div>
+        <%= render "jegol", :service => "/jegol/boshsession/#{Jegol.get_MUC_name(@meeting.id.to_s)}", :readonly => !@meeting.active? , :tweeturl => "http://allinhq.com/meetings/#{@meeting.id.to_s}"%>
+      </div>
+    </td>
+	<td style="width:20px">
+	</td>
+    <td style="vertical-align:middle">
+      <div style="border: thin solid #F0F0F0;background-color:#FAFCFC;padding:0px 5px 0px 5px;">
+        <p>
+          <span class="section_header">Topic:</span>
+          <%= @meeting.topic %>
+        </p>
+        <p>
+          <span class="section_header">Description:</span>
+          <%= @meeting.description %>
+        </p>
+        <p>
+          <span class="section_header">Location:</span>
+          <%= @meeting.location %>
+        </p>
+        <p>
+          <span class="section_header">Duration:</span>
+          <%= @meeting.getHours %> Hours <%= @meeting.getMinutes %> Minutes
+        </p>
+        <p>
+          <span class="section_header">Start At:</span>
+          <%= @meeting.start_at %>
+        </p>
+        <p>
+          <span class="section_header">Goals:</span>
+          <ol>  
+            <% for goal in @meeting.goals %>  
+            <li><%= goal.content %></li>  
+            <% end %>  
+          </ol>
+        </p>
+        <p>
+          <span class="section_header">Agendas:</span>
+          <ol>  
+            <% for agenda in @meeting.agendas %>  
+            <li><%= agenda.content %> | <%= agenda.duration %>mins</li>  
+            <% end %>  
+          </ol>
+        </p>
+        <p>
+          <%= link_to "Edit", edit_meeting_path(@meeting) %> |
+          <%= link_to "Destroy", @meeting, :confirm => 'Are you sure?', :method => :delete %> |
+          <%= link_to "View All", meetings_path %>
+        </p>
+      </div>
+    </td>
+  </tr>
+</table>

@@ -1,0 +1,39 @@
+<%= form_for @meeting do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :topic %><br />
+    <%= f.text_field :topic %>
+  </p>
+  <p>
+    <%= render 'duration', :f => f, :hours => @meeting.getHours, :minutes => @meeting.getMinutes  %>
+  </p>
+  <p>
+  Goals:
+  <% f.fields_for :goals do |builder| %>  
+    <%= render 'goal_fields', :f => builder %>
+  <% end %> 
+  </p>
+  <p><%= link_to_add_fields "Add goal", f, :goals %></p>
+  <p>
+  Agendas:
+  <% f.fields_for :agendas do |builder| %>  
+    <%= render 'agenda_fields', :f => builder %>
+  <% end %> 
+  </p>
+  <p><%= link_to_add_fields "Add agenda", f, :agendas %></p>
+  
+  Optional:
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </p>
+  <p>
+    <%= f.label :start_at %><br />
+    <%= f.datetime_select :start_at %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

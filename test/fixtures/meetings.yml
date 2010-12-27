@@ -1,0 +1,13 @@
+one:
+  topic: MyString
+  description: MyString
+  location: MyString
+  duration: 1
+  start_at: 2010-09-19 22:39:47
+
+two:
+  topic: MyString
+  description: MyString
+  location: MyString
+  duration: 1
+  start_at: 2010-09-19 22:39:47

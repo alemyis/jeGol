@@ -1,0 +1,7 @@
+<p class="fields"> 
+  <%= f.text_field :content%>
+  <%= f.text_field :duration %>
+  <%= f.hidden_field :type, :value => "Agenda" %>
+  <%= f.hidden_field :_destroy %>  
+  <%= link_to_function "remove", "remove_fields(this)" %> 
+</p>  

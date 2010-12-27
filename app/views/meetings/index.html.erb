@@ -1,0 +1,25 @@
+<% title "Meetings" %>
+
+<table>
+  <tr>
+    <th>Topic</th>
+    <th>Description</th>
+    <th>Location</th>
+    <th>Duration</th>
+    <th>Start At</th>
+  </tr>
+  <% for meeting in @meetings %>
+    <tr>
+      <td><%= meeting.topic %></td>
+      <td><%= meeting.description %></td>
+      <td><%= meeting.location %></td>
+      <td><%= meeting.duration %></td>
+      <td><%= meeting.start_at %></td>
+      <td><%= link_to "Show", meeting %></td>
+      <td><%= link_to "Edit", edit_meeting_path(meeting) %></td>
+      <td><%= link_to "Destroy", meeting, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Meeting", new_meeting_path %></p>

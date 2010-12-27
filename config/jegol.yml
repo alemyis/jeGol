@@ -1,0 +1,34 @@
+  #Set true if you want a chat room created when create a meeting.
+  create_muc: true
+  
+  #Set true to send xmpp update stanza when meeting/items get updated 
+  send_xmpp_CRUD: true
+  
+  # Server address eg. jabber.net
+  xmpp_server: <jabber.net>
+  xmpp_bosh_port: 5280
+  c2s_port: 5333
+  
+  # Credential used to create chat rooms
+  username: <JID with create permission>
+  password: <pwd>
+  
+  #Set true if you want a JID to be created on xmpp_server when users register on qworky site
+  create_jid: true
+  
+  #Guest JIDs will be Guest<random-number>
+  guest_jid: NGuest
+  
+  #default password for user JIDs on xmpp_server
+  default_pwd: <Default guess JID password>
+  
+  #sub-domain for chat rooms
+  muc_namespace: conference.dev.qworky.net
+  
+  #chat rooms are named [jegol_room_<ID>]
+  muc_name_constant: n_jegol_room_
+  #n_jegol_room_
+  
+  #Base website URL
+  site_base: http://localhost:3000
+  

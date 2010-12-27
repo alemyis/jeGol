@@ -1,0 +1,21 @@
+<% title "Agendas" %>
+
+<table>
+  <tr>
+    <th>Meeting</th>
+    <th>Content</th>
+    <th>Duration</th>
+  </tr>
+  <% for agenda in @agendas %>
+    <tr>
+      <td><%= agenda.meeting_id %></td>
+      <td><%= agenda.content %></td>
+      <td><%= agenda.duration %></td>
+      <td><%= link_to "Show", agenda %></td>
+      <td><%= link_to "Edit", edit_agenda_path(agenda) %></td>
+      <td><%= link_to "Destroy", agenda, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Agenda", new_agenda_path %></p>

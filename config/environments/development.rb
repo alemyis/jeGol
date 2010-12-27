@@ -22,5 +22,6 @@ JeGol::Application.configure do
 
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
+  
+  JEGOL_CONFIG = YAML.load_file("#{Rails.root}/config/jegol.yml")
 end
-

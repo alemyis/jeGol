@@ -31,9 +31,11 @@ TagMenuHelper = {
                function(index, aMenuItem)
                {  
                  //menu.append('|');
-                 var menuItem = $("<span>" + aMenuItem.action + "</span>")
+                 var menuItem = $("<input/>")
+				 				 .attr('type', 'submit')
+								 .val(aMenuItem.action)
                                  .attr('action', aMenuItem.action)
-                                 .addClass('jegol_plugin_menu_item')
+                                 .addClass('jegol_Button')
                                  .click(function(){aMenuItem.clicked($(this))});
                  menu.append(menuItem);
                  //menu.append('| ');

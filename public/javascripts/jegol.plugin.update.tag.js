@@ -1,7 +1,13 @@
 
-
+/**
+ * Register 'like' update plugin
+ */
 JeGol.addUpdatePlugins('like',
 {
+	/**
+	 * Adds the parameter to like section
+	 * @param {Object} msg
+	 */
      DoUpdate: function(msg)
      {
           var section = $("#jegol_tags").find('#like');
@@ -13,8 +19,16 @@ JeGol.addUpdatePlugins('like',
           return false;
      }
 });
+
+/**
+ * Register 'action' update plugin
+ */
 JeGol.addUpdatePlugins('action',
 {
+	/**
+	 * Adds the parameter to action section
+	 * @param {Object} msg
+	 */
      DoUpdate: function(msg)
      {
           var section = $("#jegol_tags").find('#action');
@@ -26,8 +40,16 @@ JeGol.addUpdatePlugins('action',
           return false;
      }
 });
+
+/**
+ * Register 'decision' update plugin
+ */
 JeGol.addUpdatePlugins('decision',
 {
+	/**
+	 * Adds the parameter to decision section
+	 * @param {Object} msg
+	 */
      DoUpdate: function(msg)
      {
           var section = $("#jegol_tags").find('#decision');
@@ -40,8 +62,15 @@ JeGol.addUpdatePlugins('decision',
      }
 });
 
+/**
+ * Register 'park' update plugin
+ */
 JeGol.addUpdatePlugins('park',
 {
+	/**
+	 * Adds the parameter to park section
+	 * @param {Object} msg
+	 */
      DoUpdate: function(msg)
      {
           var section = $("#jegol_tags").find('#park');

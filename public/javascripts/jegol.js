@@ -10,23 +10,23 @@ var JeGol = {
     autoReconnect: true,
     viewerPlugins: {},
     updatePlugins: {},
-	//
-	// Registers viewer plugins
-	//
+	/**
+	* Registers viewer plugins
+	*/
     addViewerPlugins: function (pluginName, pluginPrototype)
     {
         JeGol.viewerPlugins[pluginName] = pluginPrototype;
     },
-	//
-	// Registers update plugin's
-	//
+	/**
+	* Registers update plugin's
+	*/
     addUpdatePlugins: function (pluginName, pluginPrototype)
     {
         JeGol.updatePlugins[pluginName] = pluginPrototype;
     },
-	//
-	// Initialize components 
-	//
+	/**
+	* Initialize components 
+	*/
     init : function()
     {
 		// init registered plugin's
@@ -47,9 +47,9 @@ var JeGol = {
 		    }
 		}
     },
-    //
-    // Send message based on type ('chat' or 'groupchat')
-    //
+    /**
+    * Send message based on type ('chat' or 'groupchat')
+    */
     execCommand : function(body){
 		if(!body) return false;
 		
@@ -75,17 +75,17 @@ var JeGol = {
 		    return JeGol.sendStanza(body, 'body');
 		}
     },
-    //
-    // Sends stanza of XMPP-type groupchat.  
-	// The inner body tag is added for the purpose of graceful degradation
-	// for other unaware XMPP clients who look for the <body> tag.
-	// If the command passed is already 'body' type, it will not be duplicated.
-	// <body ...>
-	//    <{command}>{message}</{command}>
-	//    <body>/{command} {message}</body>
-	//    <id>{psudo-GUID}</id>
-	// </body>
-    //
+    /**
+    * Sends stanza of XMPP-type groupchat.  
+	* The inner body tag is added for the purpose of graceful degradation
+	* for other unaware XMPP clients who look for the <body> tag.
+	* If the command passed is already 'body' type, it will not be duplicated.
+	* <body ...>
+	*    <{command}>{message}</{command}>
+	*    <body>/{command} {message}</body>
+	*    <id>{psudo-GUID}</id>
+	* </body>
+    */
     sendStanza : function(message, type){       
 		Strophe.debug('Sending ' + type + '...');
 		if(JeGol._isNullOrEmpty(message) ) return false;
@@ -106,9 +106,9 @@ var JeGol = {
 		
 		return false;
     },
-    //
-    //Reconnect to chat room requesting full chat history
-    //
+    /**
+    * Reconnect to chat room requesting full chat history
+    */
     getFullHistory : function(){
 		// first make sure I am logged out
 		JeGol.logout();
@@ -118,10 +118,10 @@ var JeGol = {
 		JeGol.joinMUC({"since" : '1970-01-01T00:00:00Z'}); //get full chat history
     },
   
-    //
-    //Establish connection
-    //option 1 - from hidden fields with authenticated SID from server side
-    //
+    /**
+    * Establish connection
+    * option 1 - from hidden fields with authenticated SID from server side
+    */
     loginSIDOnPage : function(data){
         Strophe.info('Login started...');
 		JeGol.room = data.room;
@@ -129,10 +129,10 @@ var JeGol = {
         JeGol.connection.attach(data.jid, data.sid, data.rid, JeGol.onConnect);
         Strophe.info('Login complete.');
     },
-    //
-    //Establish connection
-    //option 2- from server side json store request for SID
-    //
+    /**
+    * Establish connection
+    * option 2- from server side json store request for SID
+    */
     loginSIDFromServer : function(serviceURL){
         Strophe.info('Login started...');
         
@@ -154,10 +154,10 @@ var JeGol = {
         
         });
     },
-    //
-    //Establish connection
-    //option 3 - from hidden fields with username/password
-    //
+    /**
+    * Establish connection
+    * option 3 - from hidden fields with username/password
+    */
     loginUsernamePassword : function(data){
         Strophe.info('Login started...');
 		JeGol.room = data.room;
@@ -165,18 +165,18 @@ var JeGol = {
         JeGol.connection.connect(data.jid, data.password, JeGol.onConnect);
         Strophe.info('Login complete.');
     },
-    //
-    // Sends 'unavailable' XMPP-presnce stanza and disconnect.
-    //
+    /**
+    * Sends 'unavailable' XMPP-presnce stanza and disconnect.
+    */
     logout : function(){
 		Strophe.info('Logout...');
 		JeGol.connection.send($pres({to: JeGol.room + "/" + JeGol.nickname, type: 'unavailable'}).c('x', {xmlns: Strophe.NS.MUC}));
 		JeGol.connection.disconnect();
     },
   
-    //
-    // Re-login
-    //
+    /**
+    * Re-login
+    */
     refreshconnection : function(){
 		Strophe.info('Refreshing connection...');
 		
@@ -187,9 +187,9 @@ var JeGol = {
 		
 		return false;
     },
-    //
-    // Changes nickname by sending XMPP-presence type stanza 
-    //
+    /**
+    * Changes nickname by sending XMPP-presence type stanza 
+    */
     changeNickname : function(newNickname)
     {
 		JeGol.setCookie("nickname", newNickname,1);
@@ -204,11 +204,11 @@ var JeGol = {
 		return false;
     },
   
-    //
-    // Listener for connection status change.
-    // On Connected: Join chat room
-	// On Disconnect: auto reconnect if so configured
-    //
+    /**
+    * Listener for connection status change.
+    * On Connected: Join chat room
+	* On Disconnect: auto reconnect if so configured
+    */
     onConnect : function (status){
 		var ready = false;
 		Strophe.info('Connection status: ' + status);
@@ -228,9 +228,9 @@ var JeGol = {
 		}
     },
       
-    //
-    // Listener for presence. Updates roster on UI
-    //
+    /**
+    * Listener for presence. Updates roster on UI
+    */
     onPresence : function(pres){
         var from = $(pres).attr('from');
         var room = Strophe.getBareJidFromJid(from);
@@ -268,10 +268,9 @@ var JeGol = {
         }
         return true;
     },
-    //
-    // Listener for in-bound messages.
-	//
-    //
+    /**
+    * Listener for in-bound messages.
+	*/
     onPublicMessage : function(msg) {
         var from = $(msg).attr('from');
         var room = Strophe.getBareJidFromJid(from);
@@ -310,7 +309,7 @@ var JeGol = {
 						var imDiv = $(log);
 						imDiv.hover(TagMenuHelper.tagMenuPopIn, TagMenuHelper.tagMenuPopOut);
 						JeGol.addMessage(imDiv);
-						// No other shold bother if viewer handles it
+						// No other shouldn't bother if viewer handles it
 						commandIsNotHandledYet = false;
 						break;
 				    }
@@ -346,9 +345,9 @@ var JeGol = {
         }
         return true;
     },
-    //
-    // Append to message log to UI
-    //
+    /**
+    * Append to message log to UI
+    */
     addMessage : function(msg){
         var chat = $('#jegol_chatlog').get(0);
         var isAtBottom = chat.scrollTop >= chat.scrollHeight - chat.clientHeight;
@@ -359,15 +358,21 @@ var JeGol = {
             chat.scrollTop = chat.scrollHeight;
         }
     },
-    //
-    //Helpers
-    //
+    /**
+    * Helper: HTML encode 
+    */
     _htmlEncode : function (value){ 
 		return $('<div/>').text(value).html(); 
     }, 
+    /**
+    * Helper: HTML dencode 
+    */
     _htmlDecode : function(value){ 
 		return $('<div/>').html(value).text(); 
     },
+    /**
+    * Helper: True if string is null or empty or line break 
+    */
     _isNullOrEmpty : function(value){
 		if(!value
 		   ||
@@ -379,6 +384,7 @@ var JeGol = {
 		}
 		return false;
     },
+/*
     _log : function (level, msg) {
 		try{
 		    var dateTime = new Date();
@@ -387,18 +393,19 @@ var JeGol = {
 				console.log(msg);
 		}catch(e){}
     },
-	//
-	// To support multiple browser/client with same nickname, a time stampe is added after a ":~:" pattern. 
-	// This helper strips the nickname to bare name. e.g. Guest1324:~:1278889735, alem:~:1278889735
-	//
+*/
+	/**
+	* To support multiple browser/client with same nickname, a time stampe is added after a ":~:" pattern. 
+	* This helper strips the nickname to bare name. e.g. Guest1324:~:1278889735, alem:~:1278889735
+	*/
     _stripTimeStampFromNickname : function(nickname){
 		return nickname.split(':~:')[0];
     },
-	//
-	// If the same JID/nickname sends multiple messages, do not display it repeatedly. 
-	// The first message will have the nickname, subsequent messages will not until the sequence is broken by 
-	// someone else sending a message in between.
-	//
+	/**
+	* If the same JID/nickname sends multiple messages, do not display it repeatedly. 
+	* The first message will have the nickname, subsequent messages will not until the sequence is broken by 
+	* someone else sending a message in between.
+	*/
     _logNickname : function(nickname){
 		if(JeGol.lastmessagefrom != nickname) //skip nickname if from same nickname
 		{
@@ -408,6 +415,9 @@ var JeGol = {
 		}
 		return '';
     },
+	/**
+	 * Helper: Generate psudo GUID
+	 */
     psudoGuid : function(){
 		return (JeGol.S4()+JeGol.S4()
 			+"-"+
@@ -420,6 +430,9 @@ var JeGol = {
     S4 : function() {
 		return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
     },
+	/**
+	 * Helper: Set value in cookie
+	 */
     setCookie: function (c_name,value,expiredays)
     {
 		var exdate=new Date();
@@ -427,6 +440,9 @@ var JeGol = {
 		document.cookie=c_name+ "=" +escape(value)+
 		((expiredays==null) ? "" : ";expires="+exdate.toUTCString());
     },
+	/**
+	 * Helper: Get value from cookie
+	 */
     getCookie: function (c_name)
     {
 		if (document.cookie.length>0)
@@ -444,27 +460,27 @@ var JeGol = {
     }
 }
 
-//
-//Bind events
-//
+/**
+* Bind event: jegol_init
+*/
 $(document).bind('jegol_init', function(e, d){
     JeGol.init();
     $(document).trigger('connect');
 });
 
 
-//
-// On Connect event - init a strope connection and login from authenticated session service URL
-//
+/**
+* On Connect event - initialize a strope connection and login from authenticated session service URL
+*/
 $(document).bind('connect', function(e, d){
    JeGol.connection = new Strophe.Connection(BOSH_SERVICE);
    $('#jegol_connection_status').text('connecting...');
    JeGol.loginSIDFromServer({jsonURL: $('#jegol_service_url').val()});
 });
 
-//
-// After connection is made, inticializer properties
-//
+/**
+* After connection is made, initialize properties
+*/
 $(document).bind('connected', function(){
 	// Chat room is not yet joined
 	JeGol.joined = false; 
@@ -488,9 +504,9 @@ $(document).bind('connected', function(){
 	JeGol.connection.send($pres({to: JeGol.room + '/' + JeGol.nickname}).c('x', {xmlns: Strophe.NS.MUC}));
 });
 
-//
-// On disconnect, clear out UI elements, kill connection and trigger reconnection if specified
-//
+/**
+* On disconnect, clear out UI elements, kill connection and trigger reconnection if specified
+*/
 $(document).bind('disconnected', function(){
     JeGol.connection = null;
     $('#jegol_topic').empty();
@@ -516,9 +532,9 @@ $(document).bind('user_left', function(e, nickname){
     JeGol.addMessage("<div class='jegol_log_user_left'>" + JeGol._stripTimeStampFromNickname(nickname) + " left.</div>")
 });
 
-//
-//UI action listners
-//
+/**
+* UI action listener - on enter, do post
+*/
 $('#jegol_msgArea').live('keypress', function(e) {
     if(e.keyCode == 13) {
         e.preventDefault();        
@@ -532,13 +548,16 @@ $('#jegol_postButton').live('click', function(e){
     $('#jegol_msgArea').val('');
 });
 
-//
-// Start connection on load and close on unload
-//
+/**
+* Start connection on HTML page load
+*/
 window.onload = function() {
 	$(document).trigger('jegol_init');
 };
 
+/**
+ *  Close connection on HTML page unload
+ */
 window.onbeforeunload = function(){
     //var r=confirm("Are you sure you want to leave the chat room?");
     //if (r==true)

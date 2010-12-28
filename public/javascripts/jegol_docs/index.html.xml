@@ -1,0 +1,200 @@
+<?xml-stylesheet type="text/xsl" href="docs.xsl"?><javascript fileName="jegol.js">
+    <property name="BOSH_SERVICE" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="String">
+    </property>
+    <object_literal name="JeGol" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+        <property name="connection" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="null">
+        </property>
+        <property name="room" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="null">
+        </property>
+        <property name="nickname" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="null">
+        </property>
+        <property name="joined" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="null">
+        </property>
+        <property name="participants" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="null">
+        </property>
+        <property name="lastmessagefrom" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="null">
+        </property>
+        <property name="autoReconnect" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Boolean">
+        </property>
+        <object_literal name="viewerPlugins" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+        </object_literal>
+        <object_literal name="updatePlugins" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+        </object_literal>
+        <function name="addViewerPlugins" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Registers viewer plugins</description>
+        </function>
+        <function name="addUpdatePlugins" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Registers update plugin&apos;s</description>
+        </function>
+        <function name="init" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Initialize components</description>
+        </function>
+        <function name="execCommand" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Send message based on type (&apos;chat&apos; or &apos;groupchat&apos;)</description>
+            <property name="commandExists" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="body" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="commandName" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="parameter" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+        </function>
+        <function name="sendStanza" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Sends stanza of XMPP-type groupchat. The inner body tag is added for the purpose of graceful degradation for other unaware XMPP clients who look for the &lt;body&gt; tag. If the command passed is already &apos;body&apos; type, it will not be duplicated. &lt;body ...&gt; &lt; { command } &gt; { message } &lt;/ { command } &gt; &lt;body&gt;/ { command } { message } &lt;/body&gt; &lt;id&gt; { psudo -GUID}&lt;/id&gt; &lt;/body&gt;</description>
+            <property name="msg" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+        </function>
+        <function name="getFullHistory" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Reconnect to chat room requesting full chat history</description>
+        </function>
+        <function name="loginSIDOnPage" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Establish connection option 1 - from hidden fields with authenticated SID from server side</description>
+            <property name="JeGol" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                <property name="room" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                </property>
+                <property name="nickname" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                </property>
+            </property>
+        </function>
+        <function name="loginSIDFromServer" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Establish connection option 2- from server side json store request for SID</description>
+        </function>
+        <function name="loginUsernamePassword" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Establish connection option 3 - from hidden fields with username/password</description>
+            <property name="JeGol" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                <property name="room" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                </property>
+                <property name="nickname" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                </property>
+            </property>
+        </function>
+        <function name="logout" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Sends &apos;unavailable&apos; XMPP-presnce stanza and disconnect.</description>
+        </function>
+        <function name="refreshconnection" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Re-login</description>
+        </function>
+        <function name="changeNickname" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Changes nickname by sending XMPP-presence type stanza</description>
+            <property name="msg" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="x" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+        </function>
+        <function name="onConnect" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Listener for connection status change. On Connected: Join chat room On Disconnect: auto reconnect if so configured</description>
+            <property name="onConnect" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Boolean">
+                <description>Listener for connection status change. On Connected: Join chat room On Disconnect: auto reconnect if so configured</description>
+            </property>
+        </function>
+        <function name="onPresence" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Listener for presence. Updates roster on UI</description>
+            <property name="onPresence" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
+                <description>Listener for presence. Updates roster on UI</description>
+            </property>
+            <property name="room" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="nickname" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="nickname_cleaned" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="user_jid" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="JeGol" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                <property name="nickname" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                </property>
+            </property>
+        </function>
+        <function name="onPublicMessage" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Listener for in-bound messages.</description>
+            <property name="onPublicMessage" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
+                <description>Listener for in-bound messages.</description>
+            </property>
+            <property name="room" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="nickname" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="notice" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="body" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="msgID" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="delayed" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="timestamp" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="subject" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="commandIsNotHandledYet" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Boolean">
+            </property>
+            <property name="logmsg" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+        </function>
+        <function name="addMessage" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Append to message log to UI</description>
+            <property name="addMessage" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Object">
+                <description>Append to message log to UI</description>
+                <property name="scrollTop" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                </property>
+            </property>
+            <property name="isAtBottom" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+        </function>
+        <function name="_htmlEncode" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Helper: HTML encode</description>
+        </function>
+        <function name="_htmlDecode" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Helper: HTML dencode</description>
+        </function>
+        <function name="_isNullOrEmpty" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Helper: True if string is null or empty or line break</description>
+        </function>
+        <function name="_stripTimeStampFromNickname" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>To support multiple browser/client with same nickname, a time stampe is added after a &quot;:~:&quot; pattern. This helper strips the nickname to bare name. e.g. Guest1324:~:1278889735, alem:~:1278889735</description>
+        </function>
+        <function name="_logNickname" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>If the same JID/nickname sends multiple messages, do not display it repeatedly. The first message will have the nickname, subsequent messages will not until the sequence is broken by someone else sending a message in between.</description>
+            <property name="tempName" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="JeGol" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                <property name="lastmessagefrom" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                </property>
+            </property>
+        </function>
+        <function name="psudoGuid" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Helper: Generate psudo GUID</description>
+        </function>
+        <function name="S4" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Function">
+        </function>
+        <function name="setCookie" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Helper: Set value in cookie</description>
+            <property name="exdate" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="document" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                <property name="cookie" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                </property>
+            </property>
+        </function>
+        <function name="getCookie" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Helper: Get value from cookie</description>
+            <property name="c_start" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+            <property name="c_end" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+            </property>
+        </function>
+    </object_literal>
+    <property name="window" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+        <function name="onload" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Start connection on HTML page load</description>
+        </function>
+        <function name="onbeforeunload" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="false" internal="false" type="Function">
+            <description>Close connection on HTML page unload</description>
+            <property name="JeGol" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Object">
+                <property name="autoReconnect" scope="static" constructor="false" deprecated="false" private="false" protected="false" ignored="true" internal="false" type="Boolean">
+                </property>
+            </property>
+        </function>
+    </property>
+</javascript>

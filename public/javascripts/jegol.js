@@ -395,7 +395,7 @@ var JeGol = {
     },
 */
 	/**
-	* To support multiple browser/client with same nickname, a time stampe is added after a ":~:" pattern. 
+	* To support multiple browser/client with same nickname, a timestamp is added after a ":~:" pattern. 
 	* This helper strips the nickname to bare name. e.g. Guest1324:~:1278889735, alem:~:1278889735
 	*/
     _stripTimeStampFromNickname : function(nickname){

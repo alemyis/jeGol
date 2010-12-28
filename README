@@ -28,6 +28,8 @@ jeGol chat:
 	./config/environments/production.rb
 	./config/environments/staging.rb
 
+   --api documentation
+   	./public/javascripts/jegol_docs/index.html
 
    --Dependancies
 

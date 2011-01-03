@@ -166,7 +166,7 @@ var JeGol = {
         Strophe.info('Login complete.');
     },
     /**
-    * Sends 'unavailable' XMPP-presnce stanza and disconnect.
+    * Sends 'unavailable' XMPP-presence stanza and disconnect.
     */
     logout : function(){
 		Strophe.info('Logout...');
@@ -229,7 +229,7 @@ var JeGol = {
     },
       
     /**
-    * Listener for presence. Updates roster on UI
+    * Listener for presence. Updates roaster on UI
     */
     onPresence : function(pres){
         var from = $(pres).attr('from');

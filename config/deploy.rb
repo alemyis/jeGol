@@ -13,9 +13,12 @@ set :git_shallow_clone, 1
 set :scm_verbose, true
 set :use_sudo, false
 
-role :app, application
-role :web, application
-role :db,  application, :primary => true
+server domain, :app, :web
+role :db, domain, :primary => true
+
+#role :app, application
+#role :web, application
+#role :db,  application, :primary => true
 
 namespace :deploy do
   task :restart do

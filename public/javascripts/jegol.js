@@ -337,6 +337,9 @@ var JeGol = {
 				    
 				    JeGol.addMessage(logmsg);
 				}
+				
+				// audio visual indicator
+				JeGol['notify'].DoUpdate($(msg));
 		
 		    }
 			else{

@@ -12,6 +12,10 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.find(params[:id])
   end
   
+  def embedable
+    @meeting = Meeting.find(params[:id])
+  end
+  
   def new
     @meeting = Meeting.new
     #redirect_to '/meetings/topic'

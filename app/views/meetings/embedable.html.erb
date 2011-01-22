@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>jeGol</title>
+  </head>
+  <body style='background-color:#FFFFFF;'>
+	<div>
+		<%= render "jegol", :service => "/jegol/boshsession/#{Jegol.get_MUC_name(@meeting.id.to_s)}", :readonly => !@meeting.active? , :tweeturl => "http://allinhq.com/meetings/#{@meeting.id.to_s}"%>
+	</div>
+  </body>
+</html>

@@ -34,6 +34,13 @@ JeGol::Application.routes.draw do
   #map.bosh_session '/jegol/boshsession/:room_jid', :conditions => {:method => :get }, :controller => 'jegol', :action => 'new_boshsession'
   match 'jegol/boshsession/:room_jid' => 'jegol#new_boshsession', :conditions => {:method => :get }
   
+  resources :meetings do
+    member do
+      get 'embedable'
+      post 'embedable'
+    end
+  end
+  
   resources :meetings
   
   #map.home '', :controller => 'meetings', :action => 'index'

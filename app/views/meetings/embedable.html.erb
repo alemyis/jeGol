@@ -5,7 +5,7 @@
   </head>
   <body style='background-color:#FFFFFF;'>
 	<div>
-		<%= render "jegol", :service => "/jegol/boshsession/#{Jegol.get_MUC_name(@meeting.id.to_s)}", :readonly => !@meeting.active? , :tweeturl => "http://allinhq.com/meetings/#{@meeting.id.to_s}"%>
+		<%= render "jegol", :service => "/jegol/boshsession/#{Jegol.get_MUC_name(@roomId)}", :readonly => @readonly, :tweeturl => "http://50.16.134.117"%>
 	</div>
   </body>
 </html>

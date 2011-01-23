@@ -13,7 +13,8 @@ class MeetingsController < ApplicationController
   end
   
   def embedable
-    @meeting = Meeting.find(params[:id])
+    @roomId = params[:id]
+    @readonly = params[:readonly].nil? ? false : params[:readonly] == "1"
   end
   
   def new

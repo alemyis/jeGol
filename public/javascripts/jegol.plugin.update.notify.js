@@ -20,11 +20,9 @@ var flashSpeed = 1500;
 var defaultTitle = 'jeGol';
 
 function onBlur() {
-	document.body.className = 'blurred';
 	browserInfocus = 0;
 }
 function onFocus(){
-	document.body.className = 'focused';
 	browserInfocus = 1;
 }
 

@@ -2,3 +2,8 @@
 db/*.sqlite3
 log/*.log
 tmp/**/*
+app/views/agendas/.tmp_*
+app/views/goals/.tmp_*
+app/views/layouts/.tmp_*
+app/views/meetings/.tmp_*
+

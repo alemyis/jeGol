@@ -1,4 +1,4 @@
-var BOSH_SERVICE = 'http://dev.qworky.net:5280/http-bind/';//'/http-bind/';
+var BOSH_SERVICE = '/http-bind/';//'http://dev.qworky.net:5280/http-bind/';//
 
 var JeGol = {
     connection: null,
@@ -495,7 +495,7 @@ $(document).bind('connected', function(){
 	// Register listeners
 	JeGol.connection.addHandler(JeGol.onPresence, null, 'presence', null, null,  null); 
 	// TODO: Private IM is not supported yet 
-	//  JeGol.connection.addHandler(JeGol.onPublicMessage, null, 'message', null, null,  null); 
+	//JeGol.connection.addHandler(JeGol.onPublicMessage, null, 'message', 'chat', null,  null); 
 	JeGol.connection.addHandler(JeGol.onPublicMessage, null, 'message', 'groupchat', null,  null);
     
 	// If nickname is known from cookie, pick that up.
